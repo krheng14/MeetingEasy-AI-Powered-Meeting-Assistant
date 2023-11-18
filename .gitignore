@@ -1,0 +1,39 @@
+# App Logs
+app/logs
+app/*.log
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*
+app/pnpm-debug.log*
+app/lerna-debug.log*
+
+# App Node modules and build directories
+app/node_modules
+app/dist
+app/dist-ssr
+app/*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# API directory specific
+api/audio_files/*  # Assuming this is where audio files are stored
+api/*.env  # If you have environment files you want to exclude
+
+# Other folders
+testing
+*.rtf
+
+# Other common exclusions
+*.tmp
+*.temp
+*.bak
+*.backup
