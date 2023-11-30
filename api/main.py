@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 import backend
-from . import transcriber
+from backend import transcriber
 
 
 # ========== START - SETTING UP FASTAPI APP ========== #
