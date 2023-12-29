@@ -74,3 +74,10 @@ uvicorn main:APP --reload
 ### Configuration
 
 Set up your .env files in both the frontend and backend directories with the necessary API keys and endpoints.
+
+### Usage
+
+- **Record or Upload Audio**: Start a meeting and record the conversation, or upload an existing audio file.
+- **Transcription**: Convert the recorded or uploaded audio into text.
+- **Analysis**: Submit the transcript to the LLM (GPT-4) to extract insights and action items.
+- **Review**: Check the extracted information and use it for meeting summaries or follow-up actions.
