@@ -12,8 +12,9 @@
 *.ipynb
 
 # API directory specific
-./api/audio_files/*  # Assuming this is where audio files are stored
-./api/.env  # If you have environment files you want to exclude
+/audio_files/*
+/.env
+/audio_files/*  
 
 # Other folders
 testing
