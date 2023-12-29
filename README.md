@@ -20,7 +20,7 @@ AI-powered web app for efficient meeting management, featuring advanced audio tr
 ### Prerequisites
 
 - Node.js and npm (for the frontend)
-- Python 3.x (for the backend)
+- Python 3.10 (for the backend)
 - Access to OpenAI's Whisper and GPT-4 models
 
 ### Installation
@@ -28,7 +28,7 @@ AI-powered web app for efficient meeting management, featuring advanced audio tr
 **Clone the Repository**:
 
 ```bash
-git clone https://github.com/[your-github-username]/MeetingEasy-AI-Powered-Meeting-Assistant.git
+git clone https://github.com/krheng14/MeetingEasy-AI-Powered-Meeting-Assistant.git
 ```
 
 **Frontend Setup**:
