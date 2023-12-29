@@ -1,29 +1,20 @@
+# transcriber.py
 import os 
-import threading
 from fastapi import APIRouter, File, UploadFile
 from fastapi import Form
-from pathlib import Path
 import pydantic
-from pydantic import BaseModel
+import pydantic 
 from dotenv import load_dotenv
 
 # LLM Model
 from openai import OpenAI
 import whisper
-import subprocess
-
-# Sound Transcript Libraries
-import sounddevice as sd
-from IPython.display import Audio
-from scipy.io.wavfile import write
-import numpy as np
-
 
 
 router = APIRouter()
 
 # Load environment variables from .env file
-load_dotenv('/Users/kimrui/aiap-projects/MeetingEasy/MeetingEasy/api/.env')
+load_dotenv()
 # Get API key from environment variable
 openai_api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI()
@@ -44,7 +35,8 @@ def get_unique_filename(filepath):
     return filepath
 
 
-audio_file_path = '/Users/kimrui/aiap-projects/MeetingEasy/MeetingEasy/api/audio_files/'
+audio_file_path = os.getenv("AUDIO_STORAGE_PATH")
+backend_api = os.getenv("BACKEND_API")
 # ================ APIs for uploading file to backend ===========
 @router.post("/api/upload") #Need cloud storage
 async def upload_file(file: UploadFile = File(...), purpose: str = Form(...)):
@@ -63,7 +55,7 @@ async def upload_file(file: UploadFile = File(...), purpose: str = Form(...)):
     # subprocess.run(['ffmpeg', '-i', file_location, mp3_filename])
 
     # Convert file system path to file url path
-    file_url = file_location.replace(audio_file_path, "http://localhost:8000/static/")
+    file_url = file_location.replace(audio_file_path, backend_api)
 
     return {"info": f"file '{file.filename}' saved at '{file_location}'", "audio_file_name": file_location, "file_url": file_url}
 

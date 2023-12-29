@@ -1,18 +1,3 @@
-# App Logs
-./app/logs
-./app/*.log
-./app/npm-debug.log*
-./app/yarn-debug.log*
-./app/yarn-error.log*
-./app/pnpm-debug.log*
-./app/lerna-debug.log*
-
-# App Node modules and build directories
-./app/node_modules
-./app/dist
-./app/dist-ssr
-./app/*.local
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

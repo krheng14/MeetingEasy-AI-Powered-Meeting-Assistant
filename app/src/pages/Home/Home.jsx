@@ -1,9 +1,14 @@
+//Home.jsx
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button, VStack, HStack, Spinner } from "@chakra-ui/react";
 import SideBar from './Components/SideBar';
 
 const Home = () => {
 
+  const getEnv = (varName, defaultValue) => {
+    return window._env_ && window._env_[varName] ? window._env_[varName] : defaultValue;
+  }
+  const VITE_BACKEND_URL = getEnv('VITE_BACKEND_URL', `${import.meta.env.VITE_BACKEND_URL}`)
 
   const [audioFileName, setAudioFileName] = useState('');
   const [audioUrl, setAudioUrl] = useState('');
@@ -23,7 +28,7 @@ const Home = () => {
         formData.append("file", audioData);
     } else if (audioData instanceof Blob) {
         // Convert the Blob from recording to a File
-        const fileFromBlob = new File([audioData], "output.webm", { type: 'audio/webm' });
+        const fileFromBlob = new File([audioData], "output.mp3", { type: 'audio/mp3' });
         formData.append("file", fileFromBlob);
     } else {
         console.error("Unsupported data type for upload");
@@ -34,7 +39,7 @@ const Home = () => {
     formData.append("purpose", purpose);
 
     try {
-        const response = await fetch("http://localhost:8000/api/upload", {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/upload`, {
           method: "POST",
           body: formData,
         });
@@ -65,7 +70,7 @@ const Home = () => {
       };
   
       recorder.onstop = async () => {
-        const audioBlob = new Blob(chunks, { type: 'audio/webm' });
+        const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
         if (audioBlob.size > 0) {
           handleFileUpload(audioBlob, 'record'); // Upload the audioBlob to the server
         } else {
@@ -97,7 +102,7 @@ const Home = () => {
   const handleTranscription = async (audioFileName) => {
     setIsTranscribing(true);
     
-    const transcript_response = await fetch('http://localhost:8000/api/transcriber', {
+    const transcript_response = await fetch(`${VITE_BACKEND_URL}/api/transcriber`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

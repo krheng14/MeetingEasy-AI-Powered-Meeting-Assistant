@@ -1,3 +1,4 @@
+//SideBar.jsx
 import React from 'react';
 import { useFileUpload } from 'use-file-upload';
 import { Input, HStack, VStack, Box, Button, Text, Spinner } from '@chakra-ui/react';

@@ -1,4 +1,5 @@
-
+# main.py
+import os
 import fastapi
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,6 +26,6 @@ APP.add_middleware(
     ],  # allows any headers to make request. e.g http://localhost:3000/chat chat is the header.
 )
 
-APP.mount("/static", StaticFiles(directory="/Users/kimrui/aiap-projects/MeetingEasy/MeetingEasy/api/audio_files/"), name="static")
+APP.mount("/static", StaticFiles(directory=os.getenv("AUDIO_STORAGE_PATH")), name="static")
 
 APP.include_router(transcriber.router)
