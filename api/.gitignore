@@ -10,11 +10,9 @@
 *.sw?
 *.env
 *.ipynb
-
-# API directory specific
-/audio_files/*
-/.env
-/audio_files/*  
+*.mp3
+*.wav
+*.webm
 
 # Other folders
 testing
